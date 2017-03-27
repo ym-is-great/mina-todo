@@ -1,0 +1,27 @@
+<!--pages/index/index.wxml-->
+<view class="head">
+    <input
+        class="{{input.class}}"
+        value="{{input.value}}"
+        placeholder="你想怎样啦？"
+        placeholder-style="color:#fff"
+        bindfocus="focus"
+        bindblur="blur"
+        bindconfirm="confirm"/>
+</view>
+<view class="body">
+    <checkbox-group bindchange="check">
+        <view class="item" wx:for="{{pending}}" wx:key="{{index}}">
+            <checkbox value="{{index}}" checked="{{pendingItemChecked}}"/>
+            <text>{{item}}</text>
+        </view>
+    </checkbox-group>
+</view>
+<view class="foot">
+    <checkbox-group bindchange="uncheck">
+        <view class="item" wx:for="{{completed}}" wx:key="{{index}}">
+            <checkbox value="{{index}}" checked="{{completedItemChecked}}"/>
+            <text>{{item}}</text>
+        </view>
+    </checkbox-group>
+</view>

@@ -1,0 +1,22 @@
+/* pages/index/index.wxss */
+.head {
+    background: #673ab7;
+    padding: 120rpx 30rpx;
+}
+.head input {
+    color: #fff;
+    height: 30pt;
+    font-size: 18pt;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.head input.focused {
+    font-size: 28pt;
+}
+.body .item, .foot .item {
+    padding: 20rpx 30rpx;
+    border-bottom: 1px solid #dedede;
+}
+.foot .item text {
+    color: #999;
+}
