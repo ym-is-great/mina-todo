@@ -5,31 +5,28 @@ Page({
       class: '',
       value: ''
     },
-    pending: [
-      'TEST1',
-      'TEST2',
-      'TEST3'
-    ],
-    completed: [
-    ],
-    pendingItemChecked:   false,
-    completedItemChecked: true
+    items:[
+      { name: 'TEST1', status: 0 },
+      { name: 'TEST2', status: 0 },
+      { name: 'TEST3', status: 0 },
+      { name: 'TEST4', status: 1 }
+    ]
   },
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
-  },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  },
+  // onLoad:function(options){
+  //   // 页面初始化 options为页面跳转所带来的参数
+  // },
+  // onReady:function(){
+  //   // 页面渲染完成
+  // },
+  // onShow:function(){
+  //   // 页面显示
+  // },
+  // onHide:function(){
+  //   // 页面隐藏
+  // },
+  // onUnload:function(){
+  //   // 页面关闭
+  // },
   /**
    * 获取焦点事件
    */
@@ -47,8 +44,8 @@ Page({
    */
   confirm: function(e) {
     if (e.detail.value) {
-      this.data.pending.push(e.detail.value);
-      this.setData({ 'pending' : this.data.pending });
+      this.data.items.push({ name: e.detail.value, status: 0 });
+      this.setData({ 'items' : this.data.items });
       this.setData({ 'input.value' : '' });
     }
   },
@@ -56,18 +53,26 @@ Page({
    * 选中事件
    */
   check: function(e) {
-    var array = e.detail.value;
-    for(var i=0; i<array.length; i++) {
-      this.data.completed.push(this.data.pending[array[i]]);
-      this.data.pending.splice(array[i], 1);
-      this.setData({ 'pending' : this.data.pending });
-      this.setData({ 'completed' : this.data.completed });
-    }
-    this.setData({ 'pendingItemChecked' : this.data.pendingItemChecked });
+    let index = e.detail.value[0];
+    this.data.items[index].status = 1;
+    this.setData({ 'items' : this.data.items });
   },
   /**
    * 取消选中事件
    */
   uncheck: function(e) {
+    for (let i=0; i<this.data.items.length; i++) {
+      this.data.items[i].status = 0;
+    }
+    for (let i=0; i<e.detail.value.length; i++) {
+      let index = e.detail.value[i];
+      this.data.items[index].status = 1;
+    }
+    this.setData({ 'items' : this.data.items });
+  },
+  remove: function(e) {
+    let index = e.target.dataset.index;
+    this.data.items.splice(index, 1);
+    this.setData({ 'items' : this.data.items });
   }
 })

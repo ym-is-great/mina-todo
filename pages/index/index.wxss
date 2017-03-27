@@ -1,12 +1,15 @@
 /* pages/index/index.wxss */
+text {
+    margin-left: 20rpx;
+}
 .head {
     background: #673ab7;
-    padding: 120rpx 30rpx;
+    padding: 120rpx 50rpx;
 }
 .head input {
     color: #fff;
     height: 30pt;
-    font-size: 18pt;
+    font-size: 20pt;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
@@ -14,9 +17,17 @@
     font-size: 28pt;
 }
 .body .item, .foot .item {
-    padding: 20rpx 30rpx;
-    border-bottom: 1px solid #dedede;
+    font-size: 14pt;
+    color: #333;
+    padding: 40rpx 50rpx;
+    border-bottom: 1px solid #eeeeee;
+}
+checkbox, text, icon {
+    vertical-align:middle;
+}
+icon {
+    float: right;
 }
 .foot .item text {
-    color: #999;
+    color: #bbbbbb;
 }

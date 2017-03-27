@@ -3,7 +3,7 @@
     <input
         class="{{input.class}}"
         value="{{input.value}}"
-        placeholder="你想怎样啦？"
+        placeholder="需要做什么？"
         placeholder-style="color:#fff"
         bindfocus="focus"
         bindblur="blur"
@@ -11,17 +11,19 @@
 </view>
 <view class="body">
     <checkbox-group bindchange="check">
-        <view class="item" wx:for="{{pending}}" wx:key="{{index}}">
-            <checkbox value="{{index}}" checked="{{pendingItemChecked}}"/>
-            <text>{{item}}</text>
+        <view class="item" wx:for="{{items}}" wx:key="{{index}}" wx:if="{{!item.status}}">
+            <checkbox value="{{index}}" checked="{{false}}"/>
+            <text>{{item.name}}</text>
+            <icon type="cancel" size="30" color="#EF5350" bindtap="remove" data-index="{{index}}"/>
         </view>
     </checkbox-group>
 </view>
 <view class="foot">
     <checkbox-group bindchange="uncheck">
-        <view class="item" wx:for="{{completed}}" wx:key="{{index}}">
-            <checkbox value="{{index}}" checked="{{completedItemChecked}}"/>
-            <text>{{item}}</text>
+        <view class="item" wx:for="{{items}}" wx:key="{{index}}" wx:if="{{item.status}}">
+            <checkbox value="{{index}}" checked="{{true}}"/>
+            <text>{{item.name}}</text>
+            <icon type="cancel" size="30" color="#EF5350" bindtap="remove" data-index="{{index}}"/>
         </view>
     </checkbox-group>
 </view>
