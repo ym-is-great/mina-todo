@@ -27,3 +27,7 @@
         </view>
     </checkbox-group>
 </view>
+<view class="empty" wx:if="{{items.length == 0}}">
+    <icon type="success" size="20" color="{{item}}"/>
+    <text>无待办事项</text>
+</view>

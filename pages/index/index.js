@@ -6,10 +6,6 @@ Page({
       value: ''
     },
     items:[
-      { name: 'TEST1', status: 0 },
-      { name: 'TEST2', status: 0 },
-      { name: 'TEST3', status: 0 },
-      { name: 'TEST4', status: 1 }
     ]
   },
   // onLoad:function(options){

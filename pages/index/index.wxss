@@ -2,32 +2,43 @@
 text {
     margin-left: 20rpx;
 }
-.head {
-    background: #673ab7;
-    padding: 120rpx 50rpx;
-}
-.head input {
-    color: #fff;
-    height: 30pt;
-    font-size: 20pt;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-}
-.head input.focused {
-    font-size: 28pt;
-}
-.body .item, .foot .item {
-    font-size: 14pt;
-    color: #333;
-    padding: 40rpx 50rpx;
-    border-bottom: 1px solid #eeeeee;
-}
 checkbox, text, icon {
     vertical-align:middle;
 }
 icon {
     float: right;
 }
-.foot .item text {
+view.head {
+    background: #673ab7;
+    padding: 120rpx 50rpx;
+}
+view.head input {
+    color: #fff;
+    height: 30pt;
+    font-size: 20pt;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+view.head input.focused {
+    font-size: 28pt;
+}
+view.body .item, .foot .item {
+    font-size: 14pt;
+    color: #333;
+    padding: 40rpx 50rpx;
+    border-bottom: 1px solid #eeeeee;
+}
+view.foot .item text {
     color: #bbbbbb;
+}
+view.empty {
+    font-size: 12pt;
+    padding: 50rpx;
+    text-align: center;
+}
+view.empty text {
+    margin-left: 10rpx;
+}
+view.empty icon {
+    float: none;
 }
