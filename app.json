@@ -3,9 +3,8 @@
     "pages/index/index"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#512da8",
-    "navigationBarTitleText": "To-do List",
+    "navigationBarBackgroundColor": "#303F9F",
+    "navigationBarTitleText": "小待办",
     "navigationBarTextStyle":"white"
   }
 }

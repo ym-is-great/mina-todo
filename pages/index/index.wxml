@@ -17,12 +17,12 @@
             <icon type="cancel" size="30" color="#EF5350" bindtap="remove" data-index="{{index}}"/>
         </view>
     </checkbox-group>
-</view>
-<view class="foot">
     <view class="empty" wx:if="{{items.length == 0}}">
         <icon type="success" size="20" color="{{item}}"/>
         <text>无待办事项</text>
     </view>
+</view>
+<view class="foot">
     <checkbox-group bindchange="uncheck">
         <view class="item" wx:for="{{items}}" wx:key="{{index}}" wx:if="{{item.status}}">
             <checkbox value="{{index}}" checked="{{true}}"/>

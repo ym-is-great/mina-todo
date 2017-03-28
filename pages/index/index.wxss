@@ -9,7 +9,7 @@ icon {
     float: right;
 }
 view.head {
-    background: #673ab7;
+    background: #3F51B5;
     padding: 120rpx 50rpx;
 }
 view.head input {
