@@ -1,10 +1,10 @@
 {
-  "pages":[
-    "pages/index/index"
-  ],
-  "window":{
-    "navigationBarBackgroundColor": "#303F9F",
-    "navigationBarTitleText": "小待办",
-    "navigationBarTextStyle":"white"
-  }
+    "pages": [
+        "pages/index/index"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#4caf50",
+        "navigationBarTitleText": "小待办",
+        "navigationBarTextStyle": "white"
+    }
 }
