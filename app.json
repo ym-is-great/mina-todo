@@ -5,6 +5,7 @@
     "window": {
         "navigationBarBackgroundColor": "#4caf50",
         "navigationBarTitleText": "小待办",
-        "navigationBarTextStyle": "white"
+        "navigationBarTextStyle": "white",
+        "backgroundTextStyle": "light"
     }
 }

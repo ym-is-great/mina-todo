@@ -3,4 +3,5 @@
 page {
     color: #333;
     font-size: 32rpx;
+    font-family: PingFang SC;
 }

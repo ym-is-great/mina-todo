@@ -2,36 +2,42 @@
 <view class="top-bar">
     <input
         value="{{ newItem }}"
+        maxlength="16"
         placeholder="请输入待办事项"
         bindinput="inputItem"
         bindconfirm="addItem"/>
-    <image
-        class="add"
-        src="/images/icon_done_primary.png"
-        bindtap="addItem"></image>
 </view>
 
 <view class="empty" wx:if="{{ items.length == 0 }}">
-    <image class="smile" src="/images/icon_smile_colorful.png"></image>
-    <text>什么都没有</text>
+    <text>空空如也</text>
 </view>
 
 <view class="list">
-    <checkbox-group bindchange="check">
-        <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ !item.status }}">
-            <checkbox value="{{ index }}" checked="{{ false }}"/>
-            <text>{{item.content}}</text>
-            <image class="remove" src="/images/icon_remove_circle_mediun_gray.png" bindtap="removeItem"></image>
-        </view>
-    </checkbox-group>
+    <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ !item.completed }}">
+        <switch
+            type="checkbox"
+            checked="{{ false }}"
+            data-index="{{ index }}"
+            bindtap="checkItem"/>
+        <text>{{item.content}}</text>
+        <image
+            class="remove"
+            src="/images/icon_remove_circle_light_gray.png"
+            bindtap="removeItem"></image>
+    </view>
 </view>
 
 <view class="list done">
-    <checkbox-group bindchange="uncheck">
-        <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ item.status }}">
-            <checkbox value="{{ index }}" checked="{{ true }}"/>
-            <text>{{ item.content }}</text>
-            <image class="remove" src="/images/icon_remove_circle_mediun_gray.png" bindtap="removeItem"></image>
-        </view>
-    </checkbox-group>
+    <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ item.completed }}">
+        <switch
+            type="checkbox"
+            checked="{{ true }}"
+            data-index="{{ index }}"
+            bindtap="checkItem"/>
+        <text>{{ item.content }}</text>
+        <image
+            class="remove"
+            src="/images/icon_remove_circle_light_gray.png"
+            bindtap="removeItem"></image>
+    </view>
 </view>
