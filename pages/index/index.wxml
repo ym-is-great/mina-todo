@@ -1,4 +1,6 @@
 <!--pages/index/index.wxml-->
+
+<!-- 顶栏 -->
 <view class="top-bar">
     <input
         value="{{ newItem }}"
@@ -8,10 +10,13 @@
         bindconfirm="addItem"/>
 </view>
 
+<!-- 无事项 -->
 <view class="empty" wx:if="{{ items.length == 0 }}">
-    <text>空空如也</text>
+    <image class="tea" src="/images/icon_tea_colorful.png"></image>
+    <text>久在樊笼里，复得返自然。 </text>
 </view>
 
+<!-- 未做事项 -->
 <view class="list">
     <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ !item.completed }}">
         <switch
@@ -27,6 +32,7 @@
     </view>
 </view>
 
+<!-- 已完成事项 -->
 <view class="list done">
     <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ item.completed }}">
         <switch

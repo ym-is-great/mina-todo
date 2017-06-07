@@ -2,7 +2,17 @@
 Page({
     data: {
         newItem: '',
-        items: []
+        items: [
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+            { content: 'TEST', completed: false },
+        ]
     },
     onLoad: function () {
         let items = wx.getStorageSync('items')
