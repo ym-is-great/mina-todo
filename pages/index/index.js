@@ -1,33 +1,31 @@
 // pages/index/index.js
+
+let app = getApp()
+
 Page({
     data: {
         newItem: '',
-        items: [
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-            { content: 'TEST', completed: false },
-        ]
+        items: []
     },
     onLoad: function () {
-        let items = wx.getStorageSync('items')
-        if (items) {
-            this.setData({
-                'items': items
-            })
-        }
+        this.autoload()
     },
-    onUnload: function () {
+    onHide: function () {
+        this.autosave()
     },
-    // 缓存事项
-    saveItems: function () {
+    // 自动保存
+    autosave: function () {
         if (this.data.items.length) {
             wx.setStorageSync('items', this.data.items)
+        }
+    },
+    // 自动加载
+    autoload: function () {
+        let autosavedItems = wx.getStorageSync('items')
+        if (autosavedItems) {
+            this.setData({
+                'items': autosavedItems
+            })
         }
     },
     // 输入事项
@@ -42,7 +40,7 @@ Page({
                 'items': this.data.items,
                 'newItem': ''
             })
-            this.saveItems()
+            this.autosave()
         }
     },
     // 勾选事项
@@ -52,7 +50,7 @@ Page({
         this.setData({
             'items': this.data.items
         })
-        this.saveItems()
+        this.autosave()
     },
     // 删除待办事项
     removeItem: function (event) {
@@ -61,6 +59,6 @@ Page({
         this.setData({
             'items': this.data.items
         })
-        this.saveItems()
+        this.autosave()
     }
 })
