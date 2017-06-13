@@ -18,6 +18,9 @@ Page({
         if (this.data.items.length) {
             wx.setStorageSync('items', this.data.items)
         }
+        else {
+            wx.removeStorageSync('items')
+        }
     },
     // 自动加载
     autoload: function () {
