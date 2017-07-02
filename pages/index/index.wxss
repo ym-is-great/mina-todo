@@ -54,7 +54,7 @@ page {
     padding: 0 30rpx;
     position: relative;
 }
-.list .item:after {
+.list .item::after {
     position: absolute;
     content: '';
     width: 100%;
@@ -62,7 +62,7 @@ page {
     bottom: 0;
     height: 1px;
     background: #e6e6e6;
-    transform: scale(1,0.5);
+    transform: scaleY(0.5);
 }
 .list .item switch {
     margin-right: 20rpx;
