@@ -9,19 +9,17 @@ page {
     width: 100%;
     height: 220rpx;
     background: #4caf50;
-    padding: 0 60rpx;
     box-sizing: border-box;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 88;
 }
-.top-bar input {
-    color: #333;
+.top-bar .input-block {
+    width: 560rpx;
+    height: 70rpx;
     background: #fff;
-    width: 600rpx;
-    font-size: 36rpx;
-    height: 80rpx;
+    font-size: 32rpx;
     margin: 0 auto;
     border-radius: 100rpx;
     text-align: center;
@@ -30,10 +28,25 @@ page {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.top-bar .input-placeholder {
-    color: #bdbdbd;
+.top-bar text.placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
 }
-
+.top-bar text.placeholder.focus {
+    color: #fff;
+}
+.top-bar input {
+    color: #333;
+    width: 100%;
+    height: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 88;
+}
 .empty {
     text-align: center;
     margin-top: 200rpx;
@@ -51,7 +64,6 @@ page {
 .list .item {
     height: 120rpx;
     line-height: 120rpx;
-    padding: 0 30rpx;
     position: relative;
 }
 .list .item::after {
@@ -61,20 +73,36 @@ page {
     left: 0;
     bottom: 0;
     height: 1px;
-    background: #e6e6e6;
+    background: #dddddd;
     transform: scaleY(0.5);
 }
 .list .item switch {
-    margin-right: 20rpx;
+    position: absolute;
+    left: 30rpx;
+    top: 50%;
+    transform: translateY(-50%);
 }
-.done .item {
-    color: #999;
+.list .item text {
+    display: inline-block;
+    margin-left: 110rpx;
+    width: 480rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.list-done .item {
+    color: #bbbbbb;
+}
+.list .btn-remove {
+    width: 50rpx;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 30rpx;
 }
 .list image.remove {
     width: 50rpx;
     height: 50rpx;
-    position: absolute;
-    right: 30rpx;
-    top: 50%;
-    transform: translateY(-50%);
+    vertical-align: middle;
 }

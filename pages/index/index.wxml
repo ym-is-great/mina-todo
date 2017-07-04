@@ -2,12 +2,17 @@
 
 <!-- 顶栏 -->
 <view class="top-bar">
-    <input
-        value="{{ newItem }}"
-        maxlength="16"
-        placeholder="请输入待办事项"
-        bindinput="inputItem"
-        bindconfirm="addItem"/>
+    <view class="input-block">
+        <text
+            class="{{ 'placeholder ' + ((focus || newItem) ?  'focus' : '') }}">请输入待办内容</text>
+        <input
+            value="{{ newItem }}"
+            maxlength="16"
+            bindfocus="focusInput"
+            bindblur="blurInput"
+            bindinput="inputItem"
+            bindconfirm="addItem"/>
+    </view>
 </view>
 
 <!-- 无事项 -->
@@ -25,16 +30,19 @@
             data-index="{{ index }}"
             bindtap="checkItem"/>
         <text>{{item.content}}</text>
-        <image
-            class="remove"
-            src="/images/icon_remove_circle_light_gray.png"
+        <view
+            class="btn-remove"
             data-index="{{ index }}"
-            bindtap="removeItem"></image>
+            bindtap="removeItem">
+            <image
+                class="remove"
+                src="/images/icon_remove_circle_light_gray.png"></image>
+        </view>
     </view>
 </view>
 
 <!-- 已完成事项 -->
-<view class="list done">
+<view class="list list-done">
     <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ item.completed }}">
         <switch
             type="checkbox"
@@ -42,10 +50,13 @@
             data-index="{{ index }}"
             bindtap="checkItem"/>
         <text>{{ item.content }}</text>
-        <image
-            class="remove"
-            src="/images/icon_remove_circle_light_gray.png"
+        <view
+            class="btn-remove"
             data-index="{{ index }}"
-            bindtap="removeItem"></image>
+            bindtap="removeItem">
+            <image
+                class="remove"
+                src="/images/icon_remove_circle_light_gray.png"></image>
+        </view>
     </view>
 </view>

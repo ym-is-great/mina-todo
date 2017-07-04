@@ -4,7 +4,8 @@ let app = getApp()
 
 Page({
     data: {
-        newItem: '',
+        focus: false,
+        newItem: null,
         items: []
     },
     onLoad: function () {
@@ -31,6 +32,19 @@ Page({
             })
         }
     },
+    // 焦点事件
+    focusInput: function (event) {
+        this.setData({
+            'focus': true
+        })
+    },
+    // 失焦事件
+    blurInput: function (event) {
+        this.setData({
+            'newItem': this.data.newItem,
+            'focus': false
+        })
+    },
     // 输入事项
     inputItem: function (event) {
         this.data.newItem = event.detail.value
@@ -41,7 +55,7 @@ Page({
             this.data.items.push({ content: this.data.newItem, completed: false })
             this.setData({ 
                 'items': this.data.items,
-                'newItem': ''
+                'newItem': null
             })
             this.autosave()
         }

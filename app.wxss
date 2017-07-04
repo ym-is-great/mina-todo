@@ -5,3 +5,7 @@ page {
     font-size: 32rpx;
     font-family: PingFang SC;
 }
+
+.placeholder {
+    color: #999;
+}
