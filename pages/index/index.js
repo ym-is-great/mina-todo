@@ -55,7 +55,7 @@ Page({
         })
         wx.showModal({
           title: '提示',
-          content: '已存在相同的任务。',
+          content: '已存在相同任务',
         })
       } else {
         this.data.items.unshift({ content: this.data.input, completed: false })
