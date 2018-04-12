@@ -1,10 +1,13 @@
 /* pages/index/index.wxss */
 
 page {
-  padding-top: 220rpx;
+  height: 100%;
   color: #333;
   font-weight: 300;
   background: #f5f5f9;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .head {
@@ -12,12 +15,9 @@ page {
   height: 220rpx;
   background: #4caf50;
   box-sizing: border-box;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 88;
+  flex-shrink: 0;
+  position: relative;
 }
-
 .head .input-block {
   width: 560rpx;
   height: 70rpx;
@@ -31,7 +31,6 @@ page {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .head text.placeholder {
   position: absolute;
   top: 50%;
@@ -39,11 +38,9 @@ page {
   transform: translate(-50%, -50%);
   transition: all 0.2s;
 }
-
 .head text.placeholder.focus {
   color: #fff;
 }
-
 .head input {
   color: #333;
   width: 100%;
@@ -54,31 +51,30 @@ page {
   z-index: 88;
 }
 
+.body {
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
 .empty {
-  width: 100%;
   height: 100%;
   text-align: center;
   padding-top: 200rpx;
   background: #fff;
-  position: fixed;
 }
-
 .empty text {
   font-size: 28rpx;
   vertical-align: middle; 
 }
-
 .empty image.tea {
   width: 40rpx;
   height: 40rpx;
   vertical-align: middle;
   margin-right: 10rpx;
 }
-
 .list {
   background: #fff;
 }
-
 .list .item {
   padding: 0 15px;
   height: 100rpx;
@@ -87,7 +83,6 @@ page {
   align-items: center;
    position: relative; 
 }
-
 .list .item::after {
   position: absolute;
   content: '';
