@@ -4,7 +4,7 @@
 <view class="head">
   <view class="input-block">
     <text class="placeholder {{ (focus || input) && 'focus' }}">点击输入待办内容</text>
-    <input value="{{ input }}" maxlength="16" confirm-type="done" bindfocus="focus" bindblur="blur" bindinput="input" bindconfirm="add" />
+    <input value="{{ input }}" maxlength="32" confirm-type="done" bindfocus="focus" bindblur="blur" bindinput="input" bindconfirm="add" />
   </view>
 </view>
 
