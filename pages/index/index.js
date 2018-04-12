@@ -1,81 +1,87 @@
 // pages/index/index.js
 
-let app = getApp()
+const app = getApp()
 
 Page({
-    data: {
-        focus: false,
-        newItem: null,
-        items: []
-    },
-    onLoad: function () {
-        this.autoload()
-    },
-    onHide: function () {
-        this.autosave()
-    },
-    // 自动保存
-    autosave: function () {
-        if (this.data.items.length) {
-            wx.setStorageSync('items', this.data.items)
-        }
-        else {
-            wx.removeStorageSync('items')
-        }
-    },
-    // 自动加载
-    autoload: function () {
-        let autosavedItems = wx.getStorageSync('items')
-        if (autosavedItems) {
-            this.setData({
-                'items': autosavedItems
-            })
-        }
-    },
-    // 焦点事件
-    focusInput: function (event) {
-        this.setData({
-            'focus': true
-        })
-    },
-    // 失焦事件
-    blurInput: function (event) {
-        this.setData({
-            'newItem': this.data.newItem,
-            'focus': false
-        })
-    },
-    // 输入事项
-    inputItem: function (event) {
-        this.data.newItem = event.detail.value
-    },
-    // 添加事项
-    addItem: function () {
-        if (this.data.newItem) {
-            this.data.items.push({ content: this.data.newItem, completed: false })
-            this.setData({ 
-                'items': this.data.items,
-                'newItem': null
-            })
-            this.autosave()
-        }
-    },
-    // 勾选事项
-    checkItem: function (event) {
-        let index = event.currentTarget.dataset.index
-        this.data.items[index].completed = !this.data.items[index].completed
-        this.setData({
-            'items': this.data.items
-        })
-        this.autosave()
-    },
-    // 删除待办事项
-    removeItem: function (event) {
-        let index = event.currentTarget.dataset.index
-        this.data.items.splice(index, 1)
-        this.setData({
-            'items': this.data.items
-        })
-        this.autosave()
+  data: {
+    focus: false,
+    input: null,
+    items: []
+  },
+  onLoad: function () {
+    this.load()
+  },
+  onHide: function () {
+    this.save()
+  },
+  // 保存
+  save: function () {
+    if (this.data.items.length) {
+      wx.setStorageSync('items', this.data.items)
+    } else {
+      wx.removeStorageSync('items')
     }
+  },
+  // 加载
+  load: function () {
+    let items = wx.getStorageSync('items')
+    if (items) {
+      this.setData({ items })
+    }
+  },
+  // 输入框获取焦点
+  focus: function (event) {
+    this.setData({
+      'focus': true
+    })
+  },
+  // 输入框失去焦点
+  blur: function (event) {
+    this.setData({
+      'focus': false
+    })
+  },
+  // 用户输入
+  input: function (event) {
+    this.data.input = event.detail.value
+  },
+  // 添加项目
+  add: function () {
+    if (this.data.input) {
+      if (this.data.items.find(item => item.content == this.data.input)) {
+        this.setData({
+          'input': null
+        })
+        wx.showModal({
+          title: '提示',
+          content: '已存在相同的任务。',
+        })
+      } else {
+        this.data.items.unshift({ content: this.data.input, completed: false })
+        this.setData({
+          'items': this.data.items,
+          'input': null
+        })
+        this.save()
+      }
+    }
+  },
+  // 勾选项目
+  check: function (event) {
+    let index = event.currentTarget.dataset.index
+    this.data.items[index].completed = !this.data.items[index].completed
+    this.setData({
+      'items': this.data.items
+    })
+    this.save()
+  },
+  // 移出项目
+  remove: function (event) {
+    let index = event.currentTarget.dataset.index
+    this.data.items.splice(index, 1)
+    this.setData({
+      'items': this.data.items
+    })
+    this.save()
+  }
 })

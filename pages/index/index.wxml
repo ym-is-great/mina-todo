@@ -1,62 +1,37 @@
 <!--pages/index/index.wxml-->
 
-<!-- 顶栏 -->
-<view class="top-bar">
-    <view class="input-block">
-        <text
-            class="{{ 'placeholder ' + ((focus || newItem) ?  'focus' : '') }}">请输入待办内容</text>
-        <input
-            value="{{ newItem }}"
-            maxlength="16"
-            bindfocus="focusInput"
-            bindblur="blurInput"
-            bindinput="inputItem"
-            bindconfirm="addItem"/>
-    </view>
+<!-- 头部 -->
+<view class="head">
+  <view class="input-block">
+    <text class="placeholder {{ (focus || input) && 'focus' }}">点击输入待办内容</text>
+    <input value="{{ input }}" maxlength="16" confirm-type="done" bindfocus="focus" bindblur="blur" bindinput="input" bindconfirm="add" />
+  </view>
 </view>
 
 <!-- 无事项 -->
-<view class="empty" wx:if="{{ items.length == 0 }}">
-    <image class="tea" src="/images/icon_tea_colorful.png"></image>
-    <text>久在樊笼里，复得返自然。 </text>
+<view class="empty" wx:if="{{ !items.length }}">
+  <image class="tea" src="/images/icon_tea_colorful.png"></image>
+  <text>久在樊笼里，复得返自然。 </text>
 </view>
 
-<!-- 未做事项 -->
+<!-- 未完成 -->
 <view class="list">
-    <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ !item.completed }}">
-        <switch
-            type="checkbox"
-            checked="{{ false }}"
-            data-index="{{ index }}"
-            bindtap="checkItem"/>
-        <text>{{item.content}}</text>
-        <view
-            class="btn-remove"
-            data-index="{{ index }}"
-            bindtap="removeItem">
-            <image
-                class="remove"
-                src="/images/icon_remove_circle_light_gray.png"></image>
-        </view>
+  <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ !item.completed }}">
+    <switch type="checkbox" checked="{{ false }}" data-index="{{ index }}" bindtap="check" />
+    <text>{{item.content}}</text>
+    <view class="btn-remove" data-index="{{ index }}" bindtap="remove">
+      <image class="remove" src="/images/icon_remove_circle_light_gray.png"></image>
     </view>
+  </view>
 </view>
 
-<!-- 已完成事项 -->
+<!-- 已完成 -->
 <view class="list list-done">
-    <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ item.completed }}">
-        <switch
-            type="checkbox"
-            checked="{{ true }}"
-            data-index="{{ index }}"
-            bindtap="checkItem"/>
-        <text>{{ item.content }}</text>
-        <view
-            class="btn-remove"
-            data-index="{{ index }}"
-            bindtap="removeItem">
-            <image
-                class="remove"
-                src="/images/icon_remove_circle_light_gray.png"></image>
-        </view>
+  <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ item.completed }}">
+    <switch type="checkbox" checked="{{ true }}" data-index="{{ index }}" bindtap="check" />
+    <text>{{ item.content }}</text>
+    <view class="btn-remove" data-index="{{ index }}" bindtap="remove">
+      <image class="remove" src="/images/icon_remove_circle_light_gray.png"></image>
     </view>
+  </view>
 </view>
