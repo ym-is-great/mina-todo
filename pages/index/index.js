@@ -38,6 +38,7 @@ Page({
   // 输入框失去焦点
   blur: function (event) {
     this.setData({
+      'input': this.data.input,
       'focus': false
     })
   },

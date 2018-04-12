@@ -1,18 +1,13 @@
 <!--pages/index/index.wxml-->
 
-<view class="head">
-  <view class="input-block">
-    <text class="placeholder {{ (focus || input) && 'focus' }}">添加待办事项</text>
+<view class="head {{ !items.length && 'full' }}">
+  <view class="inputer">
+    <text class="placeholder {{ (focus || input) ? 'focus' : null }}">添加待办事项</text>
     <input value="{{ input }}" maxlength="32" confirm-type="done" bindfocus="focus" bindblur="blur" bindinput="input" bindconfirm="add" />
   </view>
 </view>
 
 <view class="body">
-  <!-- 无事项 -->
-  <!-- <view class="empty" wx:if="{{ !items.length }}">
-    <image class="tea" src="/images/icon_tea_colorful.png"></image> 
-    <text>点击输入框添加一个任务吧 :)</text>
-  </view> -->
   <!-- 未完成 -->
   <view class="list">
     <view class="item" wx:for="{{ items }}" wx:key="{{ index }}" wx:if="{{ !item.completed }}">
