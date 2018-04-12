@@ -14,7 +14,7 @@
       <switch type="checkbox" checked="{{ false }}" data-index="{{ index }}" bindtap="check" />
       <text>{{item.content}}</text>
       <view class="btn-remove" data-index="{{ index }}" bindtap="remove">
-        <image class="remove" src="/images/icon_remove_circle_light_gray.png"></image>
+        <image class="remove" src="/images/icon_remove.png"></image>
       </view>
     </view>
   </view>
@@ -24,7 +24,7 @@
       <switch type="checkbox" checked="{{ true }}" data-index="{{ index }}" bindtap="check" />
       <text>{{ item.content }}</text>
       <view class="btn-remove" data-index="{{ index }}" bindtap="remove">
-        <image class="remove" src="/images/icon_remove_circle_light_gray.png"></image>
+        <image class="remove" src="/images/icon_remove.png"></image>
       </view>
     </view>
   </view>
