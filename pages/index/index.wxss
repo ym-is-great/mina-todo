@@ -60,10 +60,12 @@ page {
   height: 100%;
   text-align: center;
   padding-top: 200rpx;
+  color: #666;
   background: #fff;
-}
-.empty text {
   font-size: 28rpx;
+}
+.empty icon, .empty text {
+  margin: 0 2px;
   vertical-align: middle; 
 }
 .empty image.tea {
