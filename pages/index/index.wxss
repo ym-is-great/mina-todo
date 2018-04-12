@@ -78,7 +78,7 @@ page {
   background: #fff;
 }
 .body .list .item {
-  padding: 0 15px;
+  padding: 0 10px 0 15px;
   height: 100rpx;
   line-height: 100rpx;
   display: flex;
@@ -110,6 +110,7 @@ page {
   color: #bbb;
 }
 .body .list .btn-remove {
+  padding: 5px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
